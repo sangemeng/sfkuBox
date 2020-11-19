@@ -30,7 +30,7 @@ chmod +x /sfkubox/udp2raw_amd64
 # finalspeed
 apt-get -y install libpcap-dev
 apt-get -y install iptables
-apt-get install -y openjdk-8-jre
+apt-get install -y default-jre
 mkdir /fs/
 cd /fs/
 wget --no-check-certificate "https://raw.githubusercontent.com/sangemeng/sfkuBox/main/finalspeed/finalspeed1.2_server.zip"
