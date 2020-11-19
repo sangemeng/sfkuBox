@@ -44,7 +44,7 @@ apt autoclean
 apt clean
 bash /fs/start.sh
 #nohup /sfkubox/shadowsocks2-linux -s ss://AEAD_CHACHA20_POLY1305:password@:8888 >/dev/null 2>&1 &
-nohup /sfkubox/server_linux_amd64 -t "127.0.0.1:8888" -l ":10002" -key 9999 -crypt salsa20 -mode fast2 -nocomp -sockbuf 16777217 -dscp 46 >/dev/null 2>&1 &
-nohup /sfkubox/udp2raw_amd64_hw_aes_kcptun -s -l0.0.0.0:10005 -r127.0.0.1:10002   -k "passwd" --raw-mode faketcp >/dev/null 2>&1 &
-nohup /sfkubox/udp2raw_amd64_hw_aes_finalspeed -s -l0.0.0.0:10006 -r127.0.0.1:10003   -k "passwd" --raw-mode faketcp >/dev/null 2>&1 &
-/sfkubox/shadowsocks2-linux -s ss://AEAD_CHACHA20_POLY1305:password@:8888
+nohup /sfkubox/server_linux_amd64 -t "127.0.0.1:8888" -l ":10002" -key $kcptun_password -crypt salsa20 -mode fast2 -nocomp -sockbuf 16777217 -dscp 46 >/dev/null 2>&1 &
+nohup /sfkubox/udp2raw_amd64_hw_aes_kcptun -s -l0.0.0.0:10005 -r127.0.0.1:10002   -k $udp2raw_password --raw-mode faketcp >/dev/null 2>&1 &
+nohup /sfkubox/udp2raw_amd64_hw_aes_finalspeed -s -l0.0.0.0:10006 -r127.0.0.1:10003   -k $udp2raw_password --raw-mode faketcp >/dev/null 2>&1 &
+/sfkubox/shadowsocks2-linux -s ss://AEAD_CHACHA20_POLY1305:$ss_password@:8888
