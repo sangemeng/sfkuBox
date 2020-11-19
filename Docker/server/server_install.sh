@@ -1,6 +1,6 @@
 #!/bin/bash
 apt-get update
-apt-get install unzip wget libcap-dev -y
+apt-get install unzip wget -y
 
 mkdir /sfkubox
 cd /sfkubox
@@ -30,7 +30,7 @@ chmod +x /sfkubox/udp2raw_amd64
 # finalspeed
 apt-get -y install libpcap-dev
 apt-get -y install iptables
-apt-get install -y openjdk-7-jre
+apt-get install -y openjdk-8-jre
 mkdir /fs/
 cd /fs/
 wget --no-check-certificate "https://raw.githubusercontent.com/sangemeng/sfkuBox/main/finalspeed/finalspeed1.2_server.zip"
@@ -45,6 +45,6 @@ apt clean
 bash /fs/start.sh
 #nohup /sfkubox/shadowsocks2-linux -s ss://AEAD_CHACHA20_POLY1305:password@:8888 >/dev/null 2>&1 &
 nohup /sfkubox/server_linux_amd64 -t "127.0.0.1:8888" -l ":10002" -key 9999 -crypt salsa20 -mode fast2 -nocomp -sockbuf 16777217 -dscp 46 >/dev/null 2>&1 &
-nohup /sfkubox/sfkubox/udp2raw_amd64_hw_aes_kcptun -s -l0.0.0.0:10005 -r127.0.0.1:10002   -k "passwd" --raw-mode faketcp -a >/dev/null 2>&1 &
-nohup /sfkubox/sfkubox/udp2raw_amd64_hw_aes_finalspeed -s -l0.0.0.0:10006 -r127.0.0.1:10002   -k "passwd" --raw-mode faketcp -a >/dev/null 2>&1 &
+nohup /sfkubox/udp2raw_amd64_hw_aes_kcptun -s -l0.0.0.0:10005 -r127.0.0.1:10002   -k "passwd" --raw-mode faketcp >/dev/null 2>&1 &
+nohup /sfkubox/udp2raw_amd64_hw_aes_finalspeed -s -l0.0.0.0:10006 -r127.0.0.1:10003   -k "passwd" --raw-mode faketcp >/dev/null 2>&1 &
 /sfkubox/shadowsocks2-linux -s ss://AEAD_CHACHA20_POLY1305:password@:8888
