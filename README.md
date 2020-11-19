@@ -42,7 +42,7 @@ docker run -itd -p 20002:10002/udp -p 20003:10003/udp -p 20005:10005 -p 20006:10
 
 ```sh
 # udp2raw
-.\udp2raw_mp_wepoll -c -l 0.0.0.0:3333  -r 1.1.1.1:20006 -k "none" --raw-mode faketcp
+.\udp2raw_mp_wepoll -c -l 0.0.0.0:3333  -r 1.1.1.1:20006 -k "You password" --raw-mode faketcp
 # ss
 go-shadowsocks2 -c 'ss://AEAD_CHACHA20_POLY1305:your-password@[server_address]:8488' \
     -verbose -socks :1080 -u -udptun :8053=8.8.8.8:53,:8054=8.8.4.4:53 \
